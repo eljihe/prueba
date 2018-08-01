@@ -1,0 +1,56 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<iostream>
+int Mes=0,ConsumoAnual[12],PotenciaMes[12],HorasOperacionMes[12],aux[12],j,total=12;
+float temporal;
+float promedio=0;
+char Meses[12][12] = {{"Enero"},{"Febrero"},{"Marzo"},{"Abril"},{"Mayo"},{"Junio"},{"Julio"},{"Agosto"},{"Septiembre"},{"Octubre"},{"Noviembre"},{"Diciembre"}};
+main()
+{
+
+	
+for(Mes=0;Mes<=11;Mes++)
+{
+	
+	printf("\nIngrese el Potencia de %s",Meses[Mes]);
+	scanf("%3d",&PotenciaMes[Mes]);
+	printf("Ingrese horas de operacion de %s",Meses[Mes],": ");
+	scanf("%3d",&HorasOperacionMes[Mes]);
+	ConsumoAnual[Mes]=PotenciaMes[Mes]*HorasOperacionMes[Mes];
+
+}
+        
+system("cls");/*Limpiar Pantalla*/
+
+printf("El consumo por mes es\n");
+ for(Mes=0;Mes<=11;Mes++){
+ 	printf("\n %s",Meses[Mes]);
+	printf(": %3d",ConsumoAnual[Mes]);
+	promedio=ConsumoAnual[Mes]+promedio;	
+	
+ }
+ printf("\n\n Promedio es %f",promedio/12);	
+/*Ordenar de mayor a menos por el metodo de la burbuja*/
+ for(Mes=0;Mes<=total;Mes++)
+{		
+	
+		for(j=0;j<total-1;j++){
+			if (ConsumoAnual[j] < ConsumoAnual[j+1]){
+			temporal=ConsumoAnual[j];
+			ConsumoAnual[j]=ConsumoAnual[j+1];
+			ConsumoAnual[j+1]=temporal;
+			aux[j]=j+1;
+			}
+		}
+	
+}
+
+ printf("\n\n Consumo Maximo %3d",ConsumoAnual[0]);
+ printf("\n\n Consumo Minimo %3d",ConsumoAnual[11]);
+ 
+/*fIN*/
+getch();
+return 0;
+}
